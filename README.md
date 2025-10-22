@@ -315,22 +315,22 @@ cd backend && npm run start:bot
 
 ## 🚀 **Future Roadmap**
 
-### **Phase 1: Enhanced AI** (Q1 2024)
+### **Phase 1: Enhanced AI** 
 - Machine learning for strategy optimization
 - Predictive analytics for market timing
 - Social sentiment integration
 
-### **Phase 2: Cross-Chain** (Q2 2024)
+### **Phase 2: Cross-Chain** 
 - Base Mainnet deployment
 - Arbitrum and Optimism support
 - Cross-chain rebalancing strategies
 
-### **Phase 3: Social Features** (Q3 2024)
+### **Phase 3: Social Features** 
 - Strategy marketplace
 - Copy trading with delegations
 - Community-driven strategy templates
 
-### **Phase 4: Institutional** (Q4 2024)
+### **Phase 4: Institutional**
 - Multi-signature delegation support
 - Compliance and reporting tools
 - Enterprise-grade security features
