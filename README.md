@@ -31,6 +31,31 @@ Traditional DeFi portfolio management suffers from critical flaws:
 DeleGator.AI solves the custody vs automation dilemma by using **MetaMask Smart Account Delegations (ERC-7710)** - users retain full custody while granting limited, revocable permissions to AI agents.
 
 ---
+## Gallary
+
+### Landing PAGE
+
+<img width="1920" height="942" alt="swappy-20251022-133230" src="https://github.com/user-attachments/assets/ed8ee285-6cf9-4c50-85af-6a94155f6e67" />
+
+### Strategy Setup With MetaMask Smart Account
+<img width="1910" height="930" alt="swappy-20251022-164243" src="https://github.com/user-attachments/assets/8d8679ac-b7c8-4f95-81e0-7c0e070ec28e" />
+
+### Canvas
+
+<img width="1916" height="942" alt="swappy-20251022-132441" src="https://github.com/user-attachments/assets/2e84a8fb-fcc6-439f-883e-ebc72abf583a" />
+
+### Transaction details
+
+<img width="1899" height="909" alt="swappy-20251022-165628" src="https://github.com/user-attachments/assets/c90292c3-3517-4c44-bc56-5725e9d715bf" />
+
+### Actions (Like Rebalance, swap and Transfer)
+
+<img width="505" height="503" alt="swappy-20251022-171500" src="https://github.com/user-attachments/assets/73a32607-906b-4122-b9cf-b702a3143f6c" />
+
+<img width="746" height="816" alt="swappy-20251022-170503" src="https://github.com/user-attachments/assets/ea832680-b014-40d9-a6de-34918f7efdeb" />
+
+
+
 
 ## 🚀 **How It Works**
 
