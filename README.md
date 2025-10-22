@@ -1,4 +1,4 @@
-# 🤖 DeleGator.AI - Hackathon Submission
+# 🤖 DeleGator.AI
 
 **"The AI that acts, but never takes custody."**
 
