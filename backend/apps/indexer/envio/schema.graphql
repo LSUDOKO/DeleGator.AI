@@ -1,0 +1,91 @@
+# DeleGator.AI Envio Schema
+# GraphQL entities for indexed blockchain data
+
+type Strategy @entity {
+  id: ID! # chainId-strategyId
+  chainId: Int!
+  strategyId: BigInt!
+  user: String! # User address (lowercase)
+  tokens: [String!]! # Token addresses
+  weights: [Int!]! # Weights in basis points
+  rebalanceInterval: BigInt! # Seconds between rebalances
+  isActive: Boolean!
+  createdAt: BigInt! # Block timestamp
+  createdAtBlock: BigInt! # Block number
+  updatedAt: BigInt! # Last update timestamp
+  updatedAtBlock: BigInt! # Last update block
+  
+  # Relations
+  delegations: [Delegation!]! @derivedFrom(field: "strategy")
+  rebalances: [Rebalance!]! @derivedFrom(field: "strategy")
+}
+
+type Delegation @entity {
+  id: ID! # delegationHash
+  chainId: Int!
+  delegationHash: String! # bytes32 hash
+  user: String! # User address
+  delegate: String! # Bot/delegate address
+  strategy: Strategy! # Related strategy
+  isActive: Boolean!
+  createdAt: BigInt! # Block timestamp
+  createdAtBlock: BigInt! # Block number
+  revokedAt: BigInt # Revocation timestamp
+  revokedAtBlock: BigInt # Revocation block
+}
+
+type Rebalance @entity {
+  id: ID! # txHash-logIndex
+  chainId: Int!
+  strategy: Strategy! # Related strategy
+  txHash: String! # Transaction hash
+  driftBps: BigInt! # Drift in basis points
+  gasUsed: BigInt! # Gas consumed
+  status: RebalanceStatus! # SUCCESS or FAILED
+  errorReason: String # Error message if failed
+  executedAt: BigInt! # Block timestamp
+  executedAtBlock: BigInt! # Block number
+}
+
+enum RebalanceStatus {
+  SUCCESS
+  FAILED
+}
+
+type PriceFeed @entity {
+  id: ID! # chainId-token
+  chainId: Int!
+  token: String! # Token address
+  price: BigInt! # Price (8 decimals from Pyth)
+  publishTime: BigInt! # Pyth publish timestamp
+  updatedAt: BigInt! # Block timestamp
+  updatedAtBlock: BigInt! # Block number
+}
+
+type Swap @entity {
+  id: ID! # txHash-logIndex
+  chainId: Int!
+  txHash: String! # Transaction hash
+  tokenIn: String! # Input token address
+  tokenOut: String! # Output token address
+  amountIn: BigInt! # Input amount
+  amountOut: BigInt! # Output amount
+  executedAt: BigInt! # Block timestamp
+  executedAtBlock: BigInt! # Block number
+}
+
+# Global statistics per chain
+type ChainStats @entity {
+  id: ID! # chainId
+  chainId: Int!
+  totalStrategies: Int!
+  activeStrategies: Int!
+  totalDelegations: Int!
+  activeDelegations: Int!
+  totalRebalances: Int!
+  successfulRebalances: Int!
+  failedRebalances: Int!
+  totalGasUsed: BigInt!
+  lastUpdatedAt: BigInt!
+  lastUpdatedAtBlock: BigInt!
+}

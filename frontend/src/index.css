@@ -1,0 +1,252 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* DeleGator.AI Futuristic Theme - Deep Space Black Base */
+    --background: 220 15% 6%;  /* Deep Space Black #0B0C10 */
+    --foreground: 0 0% 98%;
+
+    --card: 220 15% 8%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 220 15% 10%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Electric Teal Primary */
+    --primary: 174 100% 45%;  /* Electric Teal #00E5BE */
+    --primary-foreground: 220 15% 6%;
+
+    --secondary: 220 15% 15%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 220 15% 12%;
+    --muted-foreground: 220 10% 60%;
+
+    /* Neon Purple Accent */
+    --accent: 270 80% 60%;  /* Neon Purple */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 15% 18%;
+    --input: 220 15% 12%;
+    --ring: 174 100% 45%;
+    
+    --canvas-bg: 220 15% 6%;
+    --toolbar-bg: 220 15% 8%;
+
+    --radius: 1rem;
+
+    /* Sidebar with glass effect */
+    --sidebar-background: 220 15% 8%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 174 100% 45%;
+    --sidebar-primary-foreground: 220 15% 6%;
+    --sidebar-accent: 220 15% 12%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 220 15% 18%;
+    --sidebar-ring: 174 100% 45%;
+    
+    /* Custom DeleGator colors */
+    --teal-glow: 174 100% 45%;
+    --purple-glow: 270 80% 60%;
+    --blue-glow: 220 90% 56%;
+  }
+
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 217 33% 18%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 18%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 217 91% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 33% 18%;
+    --input: 217 33% 18%;
+    --ring: 217 91% 60%;
+    
+    --canvas-bg: 222 47% 11%;
+    --toolbar-bg: 217 33% 15%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    /* Prevent Mac trackpad back/forward navigation gestures */
+    overscroll-behavior-x: none;
+    /* Keep vertical scroll behavior */
+    overscroll-behavior-y: auto;
+  }
+}
+
+@layer utilities {
+  /* Futuristic Glassmorphism */
+  .glass {
+    @apply bg-[hsl(220,15%,8%)]/80 backdrop-blur-xl border border-[hsl(220,15%,18%)];
+  }
+
+  .glass-heavy {
+    @apply bg-[hsl(220,15%,10%)]/90 backdrop-blur-2xl border border-[hsl(220,15%,20%)];
+  }
+
+  .glass-card {
+    @apply bg-[hsl(220,15%,8%)]/60 backdrop-blur-lg border border-[hsl(220,15%,18%)] rounded-2xl;
+  }
+
+  /* Neon Gradient text utilities */
+  .gradient-text-teal-purple {
+    @apply bg-gradient-to-r from-[hsl(174,100%,45%)] to-[hsl(270,80%,60%)] bg-clip-text text-transparent;
+  }
+
+  .gradient-text-teal {
+    @apply bg-gradient-to-br from-[hsl(174,100%,45%)] to-[hsl(174,100%,35%)] bg-clip-text text-transparent;
+  }
+
+  .gradient-text-purple {
+    @apply bg-gradient-to-br from-[hsl(270,80%,60%)] to-[hsl(290,80%,60%)] bg-clip-text text-transparent;
+  }
+
+  .gradient-text-neon {
+    @apply bg-gradient-to-r from-[hsl(174,100%,45%)] via-[hsl(220,90%,56%)] to-[hsl(270,80%,60%)] bg-clip-text text-transparent;
+  }
+
+  /* Neon Glow Shadows */
+  .shadow-teal-glow {
+    box-shadow: 0 0 20px rgba(0, 229, 190, 0.3), 0 0 40px rgba(0, 229, 190, 0.1);
+  }
+
+  .shadow-teal-glow-lg {
+    box-shadow: 0 0 30px rgba(0, 229, 190, 0.4), 0 0 60px rgba(0, 229, 190, 0.2), 0 0 100px rgba(0, 229, 190, 0.1);
+  }
+
+  .shadow-purple-glow {
+    box-shadow: 0 0 20px rgba(147, 51, 234, 0.3), 0 0 40px rgba(147, 51, 234, 0.1);
+  }
+
+  .shadow-purple-glow-lg {
+    box-shadow: 0 0 30px rgba(147, 51, 234, 0.4), 0 0 60px rgba(147, 51, 234, 0.2);
+  }
+
+  .shadow-blue-glow {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3), 0 0 40px rgba(59, 130, 246, 0.1);
+  }
+
+  .shadow-neon-glow {
+    box-shadow: 
+      0 0 20px rgba(0, 229, 190, 0.3),
+      0 0 40px rgba(147, 51, 234, 0.2),
+      0 0 60px rgba(59, 130, 246, 0.1);
+  }
+
+  /* Pulsating glow animation */
+  .pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 20px rgba(0, 229, 190, 0.3), 0 0 40px rgba(0, 229, 190, 0.1);
+    }
+    50% {
+      box-shadow: 0 0 30px rgba(0, 229, 190, 0.5), 0 0 60px rgba(0, 229, 190, 0.3);
+    }
+  }
+
+  /* Smooth transitions */
+  .transition-smooth {
+    transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .transition-glow {
+    transition: box-shadow 300ms ease-out, transform 200ms ease-out;
+  }
+
+  /* Futuristic Scrollbar */
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: hsl(220, 15%, 8%);
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, hsl(174, 100%, 45%), hsl(270, 80%, 60%));
+    border-radius: 4px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, hsl(174, 100%, 55%), hsl(270, 80%, 70%));
+  }
+
+  /* Neon border animation */
+  .neon-border {
+    position: relative;
+    border: 1px solid hsl(174, 100%, 45%);
+  }
+
+  .neon-border::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(45deg, 
+      hsl(174, 100%, 45%), 
+      hsl(220, 90%, 56%), 
+      hsl(270, 80%, 60%),
+      hsl(174, 100%, 45%)
+    );
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 300ms;
+    z-index: -1;
+    filter: blur(10px);
+  }
+
+  .neon-border:hover::before {
+    opacity: 0.7;
+  }
+}
+
+/* Animated dashes for preview connection line */
+@keyframes dash-flow {
+  to {
+    stroke-dashoffset: -10;
+  }
+}

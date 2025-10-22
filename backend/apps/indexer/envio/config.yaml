@@ -1,0 +1,88 @@
+# Envio HyperIndex Configuration for DeleGator.AI
+# Indexes events from Monad Testnet and Base Sepolia
+
+name: delegator-ai-indexer
+description: Real-time indexer for DeleGator.AI portfolio automation
+
+# Global contract definitions for multichain
+contracts:
+  - name: StrategyRegistry
+    abi_file_path: abis/StrategyRegistry.json
+    handler: src/EventHandlers.ts
+    events:
+      - event: "StrategyCreated(uint256 indexed strategyId, address indexed user, address[] tokens, uint256[] weights, uint256 rebalanceInterval)"
+      - event: "StrategyUpdated(uint256 indexed strategyId, uint256[] weights, uint256 rebalanceInterval)"
+      - event: "StrategyDeactivated(uint256 indexed strategyId)"
+  
+  - name: DelegationManager
+    abi_file_path: abis/DelegationManager.json
+    handler: src/EventHandlers.ts
+    events:
+      - event: "DelegationCreated(bytes32 indexed delegationHash, address indexed user, address indexed delegate, uint256 strategyId)"
+      - event: "DelegationRevoked(bytes32 indexed delegationHash)"
+  
+  - name: RebalanceExecutor
+    abi_file_path: abis/RebalanceExecutor.json
+    handler: src/EventHandlers.ts
+    events:
+      - event: "RebalanceExecuted(uint256 indexed strategyId, uint256 driftBps, uint256 gasUsed)"
+      - event: "RebalanceFailed(uint256 indexed strategyId, string reason)"
+  
+  - name: PythOracle
+    abi_file_path: abis/PythOracle.json
+    handler: src/EventHandlers.ts
+    events:
+      - event: "PriceFeedUpdated(address indexed token, int64 price, uint256 publishTime)"
+  
+  - name: UniswapHelper
+    abi_file_path: abis/UniswapHelper.json
+    handler: src/EventHandlers.ts
+    events:
+      - event: "SwapExecuted(address indexed tokenIn, address indexed tokenOut, uint256 amountIn, uint256 amountOut)"
+
+networks:
+  - id: 10143
+    rpc_config:
+      url: https://testnet-rpc.monad.xyz
+    start_block: 0
+    contracts:
+      - name: StrategyRegistry
+        address: 
+          - "0xD2D554C6CCC071c84696a37Fb97A377E7426bA7A"
+      - name: DelegationManager
+        address:
+          - "0xdb9B1e94B5b69Df7e401DDbedE43491141047dB3"
+      - name: RebalanceExecutor
+        address:
+          - "0x4986DC56206C1bf061C376e1F1706d6498dfD50D"
+      - name: PythOracle
+        address:
+          - "0xD705648251CaaeE2c9653A9E079DA1ef3D477285"
+      - name: UniswapHelper
+        address:
+          - "0x485086A79d5aECD8de04E383227D43d575c75C2D"
+
+  - id: 84532
+    rpc_config:
+      url: https://sepolia.base.org
+    start_block: 0
+    contracts:
+      - name: StrategyRegistry
+        address:
+          - "0xE0E0C7731b99659dC0b3624f2147bD929E3B503D"
+      - name: DelegationManager
+        address:
+          - "0xe1DD9f7C03281A659998bDDd84019c93473F5C7e"
+      - name: RebalanceExecutor
+        address:
+          - "0x34cb23DEcB58E4b8343B9Df75Db40347CB9e9946"
+      - name: PythOracle
+        address:
+          - "0x907d3826Fdec91A0fED9C35E12435C9946202769"
+      - name: UniswapHelper
+        address:
+          - "0x5c3d38112C12ce75328d8fE10D63e16C90d8377f"
+
+rollback_on_reorg: true
+save_full_history: true
+unordered_multichain_mode: true
